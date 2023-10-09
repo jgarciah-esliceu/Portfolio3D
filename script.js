@@ -96,3 +96,25 @@ pages.forEach((_, index) => {
 
     }, (index + 1) * 200 + 2100)
 })
+
+// Descargar Cv al dar click
+document.addEventListener('DOMContentLoaded', function () {
+    var descargarCVBtn = document.getElementById('descargar-cv');
+    descargarCVBtn.addEventListener('click', function (event) {
+        // Evitar que el enlace se comporte como un enlace normal
+        event.preventDefault();
+
+        // Obtener el nombre del archivo desde el atributo "download"
+        var fileName = this.getAttribute('download');
+
+        // Crear un enlace temporal para la descarga
+        var link = document.createElement('a');
+        link.href = fileName;
+
+        // Especificar que el enlace debe descargar el archivo en lugar de navegar a él
+        link.setAttribute('download', fileName);
+
+        // Hacer clic en el enlace temporal para iniciar la descarga
+        link.click();
+    });
+});
